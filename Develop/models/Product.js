@@ -16,18 +16,51 @@ Product.init(
       primaryKey: true,
       autoIncrement: true
     },
-    // define category name column
-    category_name: {
+    // define product name column
+    product_name: {
       type: DataTypes.STRING,
       allowNull: false
+    },
+    // define product name column
+    product_name: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    // define price column
+    price: {
+      // might have to change to string
+      type: DataTypes.DECIMAL,
+      allowNull: false,
+      validate: {
+        //checks format for decimal
+        isDecimal: true
+      }
+    },
+    // define stock column
+    stock: {
+      // might have to change to string
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      defaultValue: 10,
+      validate: {
+        //checks format for decimal
+        isNumeric: true
+      }
+    },
+    category_id: {
+      type: DataTypes.INTEGER,
+        references: {
+          model: 'category',
+          key: 'id'
+        }
     }
   },
   {
     sequelize,
     timestamps: false,
-    freezeTableName: true,
     underscored: true,
     modelName: 'product',
+    freezeTableName: true
   }
 );
 
