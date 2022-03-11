@@ -17,12 +17,12 @@ router.get('/', (req, res) => {
 
 router.get('/:id', (req, res) => {
   // find one category by its `id` value
-    Category.findByPk(req.params.id).then((dbCategoryData) => {
-      if (!dbCategoryData) {
-        res.status(404).json({ message: 'No category found with this id' });
-        return;
-      }
-      res.json(dbCategoryData);
+  Category.findByPk(req.params.id).then((dbCategoryData) => {
+    if (!dbCategoryData) {
+      res.status(404).json({ message: 'No category found with this id' });
+      return;
+    }
+    res.json(dbCategoryData);
   })
   .catch(err => {
     console.log(err);
