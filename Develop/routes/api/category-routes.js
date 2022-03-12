@@ -6,7 +6,9 @@ const { Category, Product } = require('../../models');
 router.get('/', (req, res) => {
   // find all categories
   // Access our User model and run .findAll() method)
-  Category.findAll()
+  Category.findAll({
+    include: [{model: Product}]
+  })
     .then(dbCategoryData => res.json(dbCategoryData))
     .catch(err => {
       console.log(err);
@@ -17,7 +19,13 @@ router.get('/', (req, res) => {
 
 router.get('/:id', (req, res) => {
   // find one category by its `id` value
-  Category.findByPk(req.params.id).then((dbCategoryData) => {
+  Category.findOne({     
+      where: {
+            id: req.params.id
+        },
+        include: [{model: Product}]
+  })
+  .then((dbCategoryData) => {
     if (!dbCategoryData) {
       res.status(404).json({ message: 'No category found with this id' });
       return;

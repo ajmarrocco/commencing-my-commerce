@@ -29,7 +29,7 @@ Product.init(
     // define price column
     price: {
       // might have to change to string
-      type: DataTypes.DECIMAL,
+      type: DataTypes.DECIMAL(10, 2),
       allowNull: false,
       validate: {
         //checks format for decimal
