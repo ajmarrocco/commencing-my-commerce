@@ -30,7 +30,23 @@ router.get('/', (req, res) => {
 // get one product
 router.get('/:id', (req, res) => {
   // find a single product by its `id`
-  Product.findByPk(req.params.id).then((dbProductData) => {
+  Product.findOne({     
+      where: {
+            id: req.params.id
+        },
+      include: [
+        {
+          model: Category
+        },
+        {
+          model: Tag,
+          attributes: ['tag_name'],
+          through: ProductTag,
+          as: 'tags'
+        }
+      ]
+  })
+  .then((dbProductData) => {
     if (!dbProductData) {
       res.status(404).json({ message: 'No tag found with this id' });
       return;
