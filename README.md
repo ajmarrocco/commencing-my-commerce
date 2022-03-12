@@ -13,7 +13,7 @@ A application that allows an internet retail company to use Sequelize and Expres
 * [Questions](#questions)
 
 ## Video
-Please see link for walkthrough tutorial: 
+Please see link for walkthrough tutorial: https://drive.google.com/file/d/1EGDRpVfltnWVxePPRuhy1Z-8HsB4iK42/view?usp=sharing
 
 ## Technologies
 * Express
